@@ -7,44 +7,58 @@
 :vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
 :vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
 :vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
-S_0x55e8c15f8df0 .scope module, "test" "test" 2 2;
+S_0x55750c2bcd40 .scope module, "test" "test" 2 14;
  .timescale 0 0;
-v0x55e8c15fa350_0 .var "x", 0 0;
-v0x55e8c15fa7b0_0 .var "y", 0 0;
-    .scope S_0x55e8c15f8df0;
+v0x55750c2d00d0_0 .var "d", 0 0;
+v0x55750c2d0190_0 .net "out", 3 0, L_0x55750c2d0830;  1 drivers
+v0x55750c2d0230_0 .var "s0", 0 0;
+v0x55750c2d0330_0 .var "s1", 0 0;
+S_0x55750c2bced0 .scope module, "uut" "demux1_4" 2 18, 2 1 0, S_0x55750c2bcd40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "s0";
+    .port_info 1 /INPUT 1 "s1";
+    .port_info 2 /INPUT 1 "d";
+    .port_info 3 /OUTPUT 4 "out";
+L_0x55750c2d0400 .functor NOT 1, v0x55750c2d0230_0, C4<0>, C4<0>, C4<0>;
+L_0x55750c2d04a0 .functor NOT 1, v0x55750c2d0330_0, C4<0>, C4<0>, C4<0>;
+L_0x55750c2d0560 .functor AND 1, v0x55750c2d00d0_0, L_0x55750c2d0400, L_0x55750c2d04a0, C4<1>;
+L_0x55750c2d06f0 .functor AND 1, v0x55750c2d00d0_0, L_0x55750c2d0400, v0x55750c2d0330_0, C4<1>;
+L_0x55750c2d0790 .functor AND 1, v0x55750c2d00d0_0, v0x55750c2d0230_0, L_0x55750c2d04a0, C4<1>;
+L_0x55750c2d09f0 .functor AND 1, v0x55750c2d00d0_0, v0x55750c2d0230_0, v0x55750c2d0330_0, C4<1>;
+v0x55750c2a89e0_0 .net *"_ivl_0", 0 0, L_0x55750c2d0560;  1 drivers
+v0x55750c2a8570_0 .net *"_ivl_2", 0 0, L_0x55750c2d06f0;  1 drivers
+v0x55750c283ba0_0 .net *"_ivl_4", 0 0, L_0x55750c2d0790;  1 drivers
+v0x55750c2cfa80_0 .net *"_ivl_6", 0 0, L_0x55750c2d09f0;  1 drivers
+v0x55750c2cfb60_0 .net "d", 0 0, v0x55750c2d00d0_0;  1 drivers
+v0x55750c2cfc70_0 .net "out", 3 0, L_0x55750c2d0830;  alias, 1 drivers
+v0x55750c2cfd50_0 .net "s0", 0 0, v0x55750c2d0230_0;  1 drivers
+v0x55750c2cfe10_0 .net "s0n", 0 0, L_0x55750c2d0400;  1 drivers
+v0x55750c2cfed0_0 .net "s1", 0 0, v0x55750c2d0330_0;  1 drivers
+v0x55750c2cff90_0 .net "s1n", 0 0, L_0x55750c2d04a0;  1 drivers
+L_0x55750c2d0830 .concat8 [ 1 1 1 1], L_0x55750c2d0560, L_0x55750c2d06f0, L_0x55750c2d0790, L_0x55750c2d09f0;
+    .scope S_0x55750c2bcd40;
 T_0 ;
-    %vpi_call 2 7 "$display", "hello world" {0 0 0};
-    %vpi_call 2 8 "$dumpfile", "test.vcd" {0 0 0};
-    %vpi_call 2 9 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55e8c15f8df0 {0 0 0};
+    %vpi_call 2 21 "$monitor", $time, " %b, %b, %b, %b", v0x55750c2d0230_0, v0x55750c2d0330_0, v0x55750c2d00d0_0, v0x55750c2d0190_0 {0 0 0};
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55750c2d0230_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55750c2d0330_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55750c2d00d0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55750c2d0330_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55750c2d0230_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55750c2d0330_0, 0, 1;
     %end;
     .thread T_0;
-    .scope S_0x55e8c15f8df0;
-T_1 ;
-    %delay 0, 0;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x55e8c15fa350_0, 0, 1;
-    %delay 0, 0;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x55e8c15fa7b0_0, 0, 1;
-    %delay 10, 0;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x55e8c15fa350_0, 0, 1;
-    %end;
-    .thread T_1;
-    .scope S_0x55e8c15f8df0;
-T_2 ;
-    %delay 0, 0;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x55e8c15fa350_0, 0, 1;
-    %delay 0, 0;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x55e8c15fa7b0_0, 0, 1;
-    %delay 20, 0;
-    %vpi_call 2 20 "$finish" {0 0 0};
-    %end;
-    .thread T_2;
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
     "<interactive>";
-    "test.v";
+    "demux.v";

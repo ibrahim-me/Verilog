@@ -5,9 +5,12 @@ module test;
 	mux_4_1 uut(s, i, out);
 	initial begin
 		i[0]=0;
-		$dumpfile("mux_4_1_tb.vcd"); 
-		$dumpvars(0, mux_4_1_tb);
-		$display("hello %b",i[0]);
+
+		$monitor($time," %b, %b, %b",s, i, out);
+		#5 s=2'b00; i=4'b1010;
+		#5 s=2'b01; 
+		#5 s=2'b10;
+		#5 s=2'b11;
 	end
 
 endmodule 
